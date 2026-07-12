@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.gemini import generate_text
-
+from app.elastic import check_connection
 app = FastAPI(
     title="Recipe AI API"
 )
@@ -18,3 +18,7 @@ def generate(prompt: str):
     return {
         "response": generate_text(prompt)
     }
+@app.get('/elastic')
+def elastic():
+    return check_connection()
+
