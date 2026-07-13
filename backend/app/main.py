@@ -1,7 +1,14 @@
 from fastapi import FastAPI
-from app.gemini import generate_text
-from app.elastic import check_connection 
-from app.ingest import create_index ,ingest_csv
+
+from app.gemini import generate_with_gemini
+from app.elastic import check_connection, es
+from app.ingest import create_index, ingest_csv
+from app.search import search_recipes
+from app.autocomplete import autocomplete
+from app.rag import build_prompt
+from app.groq import generate_with_groq
+from app.vectorsearch import vector_search
+from app.hybridsearch import hybrid_search
 app = FastAPI(
     title="Recipe AI API"
 )
@@ -17,7 +24,7 @@ def root():
 @app.get("/generate")
 def generate(prompt: str):
     return {
-        "response": generate_text(prompt)
+        "response": generate_with_gemini(prompt)
     }
 @app.get('/elastic')
 def elastic():
@@ -43,7 +50,6 @@ def ingest():
 
 
 
-from app.elastic import es
 
 @app.get("/count")
 def count():
@@ -57,38 +63,47 @@ from app.search import search_recipes
 def search(
     query: str,
     cuisine: str | None = None,
+    rating: float | None = None,
     size: int = 5
 ):
-    return search_recipes(query, cuisine, size) 
-
-
-@app.get("/sample")
-def sample():
-    result = es.search(
-        index="recipes",
-        query={
-            "match": {
-                "recipe_name": "BBQ"
-            }
-        }
+    return search_recipes(
+        query=query,
+        cuisine=cuisine,
+        rating=rating,
+        size=size
     )
 
-    return result["hits"]["hits"]
 
 
 
-import pandas as pd
-
-@app.get("/test")
-def test():
-    df = pd.read_csv("data/recipes.csv")
-
-    return {
-        "ingredients": df.iloc[778]["ingredients"]
-    }
-from app.elastic import es
 
 @app.delete("/delete_index")
 def delete_index():
     es.indices.delete(index="recipes", ignore_unavailable=True)
     return {"message": "Recipes index deleted successfully."}
+
+@app.get("/autocomplete")
+def auto(query: str):
+    return autocomplete(query)
+
+@app.get("/rag")
+def rag(query: str):
+    return  build_prompt(query)
+    
+
+ 
+@app.get("/groq")
+def groq_test():
+    return {
+        "response": generate_with_groq("Say hello!")
+    }
+@app.get("/vector_search")
+def vector(query: str, size: int = 5):
+    return vector_search(query, size)
+
+@app.get("/hybrid_search")
+def hybrid(
+    query: str,
+    size: int = 5
+):
+    return hybrid_search(query, size)
