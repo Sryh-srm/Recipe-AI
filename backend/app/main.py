@@ -9,8 +9,18 @@ from app.rag import build_prompt
 from app.groq import generate_with_groq
 from app.vectorsearch import vector_search
 from app.hybridsearch import hybrid_search
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(
     title="Recipe AI API"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
