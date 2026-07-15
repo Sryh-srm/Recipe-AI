@@ -63,7 +63,7 @@ export function SearchErrorState({ message, onRetry }) {
         <button
           id="error-retry-btn"
           onClick={onRetry}
-          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white text-sm font-semibold hover:scale-105 transition-transform duration-200"
+          className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white text-sm font-semibold hover:scale-105 transition-transform duration-200"
         >
           Try again
         </button>
@@ -107,8 +107,8 @@ export function SearchInitialState() {
       className="flex flex-col items-center justify-center py-24 text-center"
       aria-label="Search prompt"
     >
-      <div className="mb-5 flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-pink-500/20 border border-orange-500/20">
-        <svg className="w-8 h-8 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+      <div className="mb-5 flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#7C3AED]/20 to-[#8B5CF6]/20 border border-[#7C3AED]/20">
+        <svg className="w-8 h-8 text-[#A855F7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
         </svg>
       </div>

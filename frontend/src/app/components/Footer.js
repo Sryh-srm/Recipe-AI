@@ -1,9 +1,10 @@
 import Link from "next/link";
+import LogoIcon from "@/app/components/LogoIcon";
 
 const FOOTER_LINKS = {
-  Product: ["Features", "Pricing", "Changelog", "Roadmap"],
-  Resources: ["Documentation", "API Reference", "Blog", "Community"],
-  Company: ["About", "Careers", "Press", "Contact"],
+  "Built With": ["Next.js", "FastAPI", "Elasticsearch", "Gemini", "Groq", "Tailwind CSS"],
+  Project: ["GitHub Repository"],
+  "Built for": ["GDG Cloud Buildathon", "Elastic Ecosystem"],
 };
 
 export default function Footer() {
@@ -18,35 +19,29 @@ export default function Footer() {
         Footer
       </h2>
 
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand column */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left gap-5">
             <Link
               href="/"
               id="footer-logo"
               className="flex items-center gap-2.5"
               aria-label="Recipe AI home"
             >
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500 shadow-md shadow-orange-500/20">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" aria-hidden="true">
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.87-3.13-7-7-7z"
-                    fill="currentColor" opacity="0.9"
-                  />
-                  <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z" fill="currentColor" opacity="0.7" />
-                </svg>
+              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] shadow-md shadow-[#7C3AED]/20">
+                <LogoIcon />
               </span>
               <span className="text-lg font-bold text-white">
                 Recipe <span className="gradient-text">AI</span>
               </span>
             </Link>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto sm:mx-0">
               AI-powered semantic recipe search — discover, cook, and enjoy
               meals tailored to you.
             </p>
             {/* Social links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center sm:justify-start gap-4">
               {[
                 {
                   label: "Twitter",
@@ -76,7 +71,7 @@ export default function Footer() {
 
           {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
-            <div key={category}>
+            <div key={category} className="flex flex-col items-center sm:items-start text-center sm:text-left">
               <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
                 {category}
               </h3>
@@ -98,12 +93,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-xs text-slate-600">
-            &copy; {year} Recipe AI, Inc. All rights reserved.
+            &copy; {year} Recipe AI. Made by Suryansh Sharma.
           </p>
-          <div className="flex items-center gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
+          <div className="flex items-center justify-center sm:justify-start gap-4 sm:gap-6 flex-wrap">
+            {["GitHub", "LinkedIn", "Portfolio"].map((item) => (
               <a
                 key={item}
                 href="#"

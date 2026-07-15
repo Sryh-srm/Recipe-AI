@@ -54,7 +54,7 @@ export default function ChatSuggestions({ onSelect }) {
             type="button"
             onClick={() => onSelect(s.prompt)}
             className="chip-shimmer glass-card rounded-xl px-4 py-3 text-left border border-white/[0.07]
-                       hover:border-orange-500/30 transition-all duration-200 group"
+                       hover:border-[#7C3AED]/30 transition-all duration-200 group"
             aria-label={`Ask: ${s.prompt}`}
           >
             <span className="text-lg leading-none block mb-1.5">{s.icon}</span>
