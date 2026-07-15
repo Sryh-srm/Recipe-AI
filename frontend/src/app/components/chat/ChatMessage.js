@@ -87,12 +87,12 @@ function SourceRecipeCard({ recipe, index }) {
       aria-label={`Source recipe: ${recipe.recipe_name}`}
     >
       {/* Index badge */}
-      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center text-white text-[10px] font-bold shadow-sm mt-0.5">
+      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] flex items-center justify-center text-white text-[10px] font-bold shadow-sm mt-0.5">
         {index}
       </span>
 
       <div className="flex-1 min-w-0">
-        <p className="text-xs font-semibold text-slate-200 leading-snug truncate group-hover:text-orange-300 transition-colors">
+        <p className="text-xs font-semibold text-slate-200 leading-snug truncate group-hover:text-[#A855F7] transition-colors">
           {recipe.recipe_name}
         </p>
         <div className="flex items-center gap-2 mt-0.5 flex-wrap">
@@ -110,7 +110,7 @@ function SourceRecipeCard({ recipe, index }) {
             </span>
           )}
           {rating > 0 && (
-            <span className="text-[10px] text-orange-400 flex items-center gap-0.5">
+            <span className="text-[10px] text-[#A855F7] flex items-center gap-0.5">
               <svg className="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
@@ -121,7 +121,7 @@ function SourceRecipeCard({ recipe, index }) {
       </div>
 
       {recipe.url && (
-        <svg className="flex-shrink-0 w-3 h-3 text-slate-600 group-hover:text-orange-400 transition-colors mt-1" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <svg className="flex-shrink-0 w-3 h-3 text-slate-600 group-hover:text-[#A855F7] transition-colors mt-1" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path fillRule="evenodd" d="M4.22 11.78a.75.75 0 010-1.06L9.44 5.5H5.75a.75.75 0 010-1.5h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V6.56l-5.22 5.22a.75.75 0 01-1.06 0z" clipRule="evenodd" />
         </svg>
       )}
@@ -141,10 +141,10 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
   // ── User bubble ──────────────────────────────────────────────────────────
   if (isUser) {
     return (
-      <div className="flex items-end justify-end gap-3 msg-user" role="listitem">
-        <div className="max-w-[78%] sm:max-w-[65%] flex flex-col items-end gap-1">
+      <div className="flex items-end justify-end gap-2 sm:gap-3 msg-user" role="listitem">
+        <div className="max-w-[88%] sm:max-w-[75%] flex flex-col items-end gap-1">
           <div
-            className="bg-gradient-to-br from-orange-500 to-pink-500 text-white rounded-2xl rounded-br-sm px-4 py-3 shadow-lg shadow-orange-500/20"
+            className="bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] text-white rounded-2xl rounded-br-sm px-4 py-3 shadow-lg shadow-[#7C3AED]/20"
             aria-label={`You said: ${message.content}`}
           >
             <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
@@ -167,7 +167,7 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
   // ── Error bubble ─────────────────────────────────────────────────────────
   if (isError) {
     return (
-      <div className="flex items-end gap-3 msg-ai" role="listitem">
+      <div className="flex items-end gap-2 sm:gap-3 msg-ai" role="listitem">
         {/* AI avatar – error state */}
         <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center self-end" aria-hidden="true">
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-red-400">
@@ -175,7 +175,7 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
           </svg>
         </div>
 
-        <div className="max-w-[78%] sm:max-w-[65%] flex flex-col gap-1">
+        <div className="max-w-[88%] sm:max-w-[65%] flex flex-col gap-1">
           <div className="glass-card border-red-500/20 rounded-2xl rounded-bl-sm px-4 py-3.5" role="alert" aria-live="assertive">
             <p className="text-sm font-semibold text-red-400 mb-1">Connection error</p>
             <p className="text-xs text-slate-400 leading-relaxed">{message.error}</p>
@@ -183,7 +183,7 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
               <button
                 id={`retry-btn-${message.id}`}
                 onClick={onRetry}
-                className="mt-3 text-xs font-semibold text-orange-400 hover:text-orange-300 flex items-center gap-1.5 transition-colors"
+                className="mt-3 text-xs font-semibold text-[#A855F7] hover:text-[#8B5CF6] flex items-center gap-1.5 transition-colors"
               >
                 <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clipRule="evenodd" />
@@ -200,10 +200,10 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
 
   // ── AI assistant bubble ──────────────────────────────────────────────────
   return (
-    <div className="flex items-end gap-3 msg-ai" role="listitem">
+    <div className="flex items-end gap-2 sm:gap-3 msg-ai" role="listitem">
       {/* AI Avatar */}
       <div
-        className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-lg shadow-orange-500/30 self-end"
+        className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] flex items-center justify-center shadow-lg shadow-[#7C3AED]/30 self-end"
         aria-hidden="true"
       >
         <svg viewBox="0 0 20 20" fill="white" className="w-4 h-4">
@@ -211,12 +211,12 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
         </svg>
       </div>
 
-      <div className="max-w-[84%] sm:max-w-[72%] flex flex-col gap-1.5 min-w-0">
+      <div className="max-w-[92%] sm:max-w-[85%] flex flex-col gap-1.5 min-w-0">
         {/* Main bubble */}
         <div className="glass-card rounded-2xl rounded-bl-sm overflow-hidden">
           {/* Provider badge */}
           {message.meta?.provider && (
-            <div className="flex items-center justify-between px-4 pt-3 pb-2 border-b border-white/[0.05]">
+            <div className="flex items-center justify-between px-3 sm:px-4 pt-2.5 sm:pt-3 pb-2 border-b border-white/[0.05]">
               <div className="flex items-center gap-2">
                 <span className="flex h-1.5 w-1.5 rounded-full bg-green-400 shadow-sm shadow-green-400/50" aria-hidden="true" />
                 <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">
@@ -234,7 +234,7 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
 
           {/* Markdown content */}
           <div
-            className="prose-chat px-4 py-4 text-sm leading-relaxed"
+            className="prose-chat px-3 sm:px-4 py-3 sm:py-4 text-sm leading-relaxed"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
             aria-label="AI response"
           />
@@ -246,12 +246,12 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
                 id={`sources-toggle-${message.id}`}
                 type="button"
                 onClick={() => setSourcesOpen((o) => !o)}
-                className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-500 hover:text-white transition-colors duration-200 group"
+                className="w-full flex items-center justify-between px-3 sm:px-4 py-2.5 text-xs font-medium text-slate-500 hover:text-white transition-colors duration-200 group"
                 aria-expanded={sourcesOpen}
                 aria-controls={`sources-panel-${message.id}`}
               >
                 <span className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5 text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg className="w-3.5 h-3.5 text-[#A855F7]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75H10a.75.75 0 010 1.5H2.75A.75.75 0 012 15.25z" clipRule="evenodd" />
                   </svg>
                   {message.meta.recipe_count} source recipe{message.meta.recipe_count !== 1 ? "s" : ""} retrieved
@@ -269,7 +269,7 @@ const ChatMessage = memo(function ChatMessage({ message, onRetry }) {
               {sourcesOpen && (
                 <div
                   id={`sources-panel-${message.id}`}
-                  className="px-4 pb-4 flex flex-col gap-2"
+                  className="px-3 sm:px-4 pb-3 sm:pb-4 flex flex-col gap-2"
                   role="list"
                   aria-label="Source recipes"
                 >

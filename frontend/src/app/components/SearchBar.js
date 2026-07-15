@@ -114,7 +114,7 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
     <div className="w-full space-y-3">
       {/* ── Mode selector ── */}
       <div
-        className="flex items-center gap-2 p-1 rounded-xl glass-card border border-white/[0.07] w-fit mx-auto"
+        className="flex items-center justify-center flex-wrap sm:flex-nowrap gap-1 sm:gap-2 p-1 rounded-xl glass-card border border-white/[0.07] w-fit mx-auto max-w-full"
         role="group"
         aria-label="Search mode"
       >
@@ -128,9 +128,9 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
               onClick={() => onModeChange(mode.id)}
               aria-pressed={active}
               title={mode.description}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 ${
                 active
-                  ? "bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-lg shadow-orange-500/25"
+                  ? "bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white shadow-lg shadow-[#7C3AED]/25"
                   : "text-slate-400 hover:text-white hover:bg-white/[0.05]"
               }`}
             >
@@ -152,7 +152,7 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
           {/* Search icon */}
           <div className="pl-5 pr-3 flex-shrink-0 pointer-events-none">
             {acLoading ? (
-              <svg className="w-5 h-5 text-orange-400 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-5 h-5 text-[#A855F7] animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
@@ -180,7 +180,7 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
             aria-autocomplete="list"
             aria-controls={hasSuggestions ? listboxId : undefined}
             aria-activedescendant={activeIndex >= 0 ? `suggestion-${activeIndex}` : undefined}
-            className="flex-1 py-4 pr-4 bg-transparent text-white placeholder-slate-500 text-base outline-none"
+            className="flex-1 py-3 sm:py-4 pr-3 sm:pr-4 bg-transparent text-white placeholder-slate-500 text-sm sm:text-base outline-none w-full"
           />
 
           <button
@@ -188,7 +188,7 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
             type="submit"
             disabled={isLoading || !inputValue.trim()}
             aria-label="Search recipes"
-            className="btn-glow m-1.5 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-200 flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-2"
+            className="btn-glow m-1.5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white text-xs sm:text-sm font-semibold shadow-lg shadow-[#7C3AED]/30 hover:shadow-[#7C3AED]/50 hover:scale-105 transition-all duration-200 flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-2"
           >
             {isLoading ? (
               <>
@@ -211,7 +211,7 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
             ref={dropdownRef}
             role="listbox"
             aria-label="Autocomplete suggestions"
-            className="absolute top-full left-0 right-0 mt-2 z-50 glass-card border border-white/[0.1] rounded-xl shadow-2xl shadow-black/50 overflow-hidden"
+            className="absolute top-full left-0 right-0 mt-2 z-50 glass-card border border-white/[0.1] rounded-xl shadow-2xl shadow-black/50 overflow-y-auto max-h-[60vh] animate-in fade-in slide-in-from-top-2 duration-200 w-[calc(100vw-2rem)] sm:w-full -ml-4 sm:ml-0"
           >
             {suggestions.map((s, i) => (
               <li
@@ -223,11 +223,11 @@ export default function SearchBar({ searchMode, onModeChange, onSearch, isLoadin
                 onMouseEnter={() => setActiveIndex(i)}
                 className={`flex items-center gap-3 px-5 py-3 text-sm cursor-pointer transition-colors duration-150 ${
                   activeIndex === i
-                    ? "bg-orange-500/10 text-white"
+                    ? "bg-[#7C3AED]/10 text-white"
                     : "text-slate-300 hover:bg-white/[0.04]"
                 }`}
               >
-                <svg className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <svg className="w-3.5 h-3.5 text-[#A855F7] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
                 </svg>
                 <span>{s}</span>

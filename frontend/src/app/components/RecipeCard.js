@@ -40,12 +40,12 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
   return (
     <article
       className="group relative glass-card rounded-2xl overflow-hidden flex flex-col
-                 hover:border-white/[0.14] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/50
+                 hover:border-white/[0.14] hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#7C3AED]/20
                  transition-all duration-300"
       aria-label={`Recipe: ${recipe_name}`}
     >
       {/* ── Image / placeholder ── */}
-      <div className="relative h-44 flex-shrink-0 bg-gradient-to-br from-orange-500/10 to-pink-500/10 overflow-hidden">
+      <div className="relative aspect-video sm:aspect-auto sm:h-44 flex-shrink-0 bg-gradient-to-br from-[#7C3AED]/10 to-[#8B5CF6]/10 overflow-hidden">
         {img_src ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -70,7 +70,7 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
             <path d="M26 44h12v4H26z" fill="white" opacity=".3" />
             <defs>
               <linearGradient id="ci" x1="8" y1="8" x2="56" y2="56">
-                <stop stopColor="#f97316" /><stop offset="1" stopColor="#ec4899" />
+                <stop stopColor="#7C3AED" /><stop offset="1" stopColor="#8B5CF6" />
               </linearGradient>
             </defs>
           </svg>
@@ -78,8 +78,8 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
 
         {/* Score badge */}
         {score != null && (
-          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-xs font-bold text-orange-300 border border-orange-500/20">
-            {score.toFixed(2)}
+          <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-xs font-bold text-[#A855F7] border border-[#7C3AED]/20">
+            Search Score {score.toFixed(2)}
           </div>
         )}
 
@@ -92,10 +92,10 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
       </div>
 
       {/* ── Body ── */}
-      <div className="flex flex-col flex-1 gap-3 p-5">
+      <div className="flex flex-col flex-1 gap-3 p-4 sm:p-5">
         {/* Title */}
         <h3
-          className="text-base font-bold text-white leading-snug line-clamp-2 group-hover:text-orange-300 transition-colors duration-200"
+          className="text-base font-bold text-white leading-snug line-clamp-2 group-hover:text-[#A855F7] transition-colors duration-200"
           title={recipe_name}
         >
           {recipe_name}
@@ -110,7 +110,7 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
               return (
                 <svg
                   key={i}
-                  className={`w-3.5 h-3.5 ${filled || half ? "text-orange-400" : "text-slate-600"}`}
+                  className={`w-3.5 h-3.5 ${filled || half ? "text-[#A855F7]" : "text-slate-600"}`}
                   fill={filled ? "currentColor" : half ? "url(#half)" : "none"}
                   stroke="currentColor"
                   strokeWidth={filled || half ? 0 : 1.5}
@@ -156,7 +156,7 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
         {/* Highlight snippet (from keyword search) */}
         {highlightMode && highlightSnippet ? (
           <p
-            className="text-xs text-slate-400 leading-relaxed line-clamp-3 [&_em]:text-orange-300 [&_em]:not-italic [&_em]:font-semibold"
+            className="text-xs text-slate-400 leading-relaxed line-clamp-3 [&_em]:text-[#A855F7] [&_em]:not-italic [&_em]:font-semibold"
             dangerouslySetInnerHTML={{ __html: highlightSnippet }}
           />
         ) : ingredientPreview.length > 0 ? (
@@ -185,7 +185,7 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
               target="_blank"
               rel="noopener noreferrer"
               id={`recipe-link-${encodeURIComponent(recipe_name)}`}
-              className="text-xs font-semibold text-orange-400 hover:text-orange-300 flex items-center gap-1.5 transition-colors duration-200"
+              className="text-xs font-semibold text-[#A855F7] hover:text-[#8B5CF6] flex items-center gap-1.5 transition-colors duration-200"
               aria-label={`View full recipe for ${recipe_name}`}
             >
               View recipe
@@ -201,7 +201,7 @@ export default function RecipeCard({ recipe, highlightMode = false }) {
 
       {/* Hover glow underline */}
       <div
-        className="absolute inset-x-0 bottom-0 h-[2px] rounded-b-2xl bg-gradient-to-r from-orange-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-x-0 bottom-0 h-[2px] rounded-b-2xl bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         aria-hidden="true"
       />
     </article>

@@ -8,16 +8,16 @@ const FEATURES = [
         <path d="M8 11h6M11 8v6" stroke="url(#g1)" strokeWidth="1.5" strokeLinecap="round" />
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#f97316" />
-            <stop offset="1" stopColor="#ec4899" />
+            <stop stopColor="#7C3AED" />
+            <stop offset="1" stopColor="#8B5CF6" />
           </linearGradient>
         </defs>
       </svg>
     ),
-    title: "Semantic Search",
-    description: `Our embedding engine understands the meaning behind your query — so searching "light summer dinner" finds exactly that, not just keyword matches.`,
-    badge: "Core Feature",
-    badgeColor: "text-orange-400 bg-orange-500/10 border-orange-500/20",
+    title: "Hybrid Search",
+    description: "Combines BM25 keyword search, dense vector search and Reciprocal Rank Fusion for more relevant recipe retrieval.",
+    badge: "Hybrid Retrieval",
+    badgeColor: "text-[#A855F7] bg-[#7C3AED]/10 border-[#7C3AED]/20",
     highlights: ["Vector embeddings", "Natural language", "Instant results"],
     href: "/search",
   },
@@ -30,17 +30,16 @@ const FEATURES = [
         <path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3h7A1.5 1.5 0 0 1 17 4.5V6" stroke="url(#g2)" strokeWidth="1.5" />
         <defs>
           <linearGradient id="g2" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#6366f1" />
-            <stop offset="1" stopColor="#ec4899" />
+            <stop stopColor="#7C3AED" />
+            <stop offset="1" stopColor="#8B5CF6" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: "AI Recipe Assistant",
-    description:
-      "Ask follow-up questions, request substitutions, scale servings, or get step-by-step guidance — your personal sous-chef is always one message away.",
-    badge: "Powered by LLM",
-    badgeColor: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
+    description: "Uses Retrieval-Augmented Generation (RAG) with Gemini/Groq so answers are grounded in retrieved recipes instead of hallucinating.",
+    badge: "RAG + LLM",
+    badgeColor: "text-[#A855F7] bg-[#7C3AED]/10 border-[#7C3AED]/20",
     highlights: ["Ingredient swaps", "Serving scaler", "Step guidance"],
     href: "/assistant",
   },
@@ -57,17 +56,16 @@ const FEATURES = [
         <path d="M8 10l2.5 2.5L16 8" stroke="url(#g3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <defs>
           <linearGradient id="g3" x1="2" y1="5" x2="22" y2="21" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#f97316" />
-            <stop offset="1" stopColor="#6366f1" />
+            <stop stopColor="#7C3AED" />
+            <stop offset="1" stopColor="#8B5CF6" />
           </linearGradient>
         </defs>
       </svg>
     ),
-    title: "Personalized Recommendations",
-    description:
-      "The more you cook, the smarter it gets. Recipe AI learns your dietary preferences, favourite cuisines, and cooking style to surface meals you'll love.",
-    badge: "Adaptive AI",
-    badgeColor: "text-pink-400 bg-pink-500/10 border-pink-500/20",
+    title: "Recipe Intelligence",
+    description: "Autocomplete, semantic understanding and contextual recommendations powered by Elasticsearch.",
+    badge: "Elastic Search",
+    badgeColor: "text-[#A855F7] bg-[#7C3AED]/10 border-[#7C3AED]/20",
     highlights: ["Dietary filters", "Taste profile", "Weekly suggestions"],
     href: "/search",
   },
@@ -77,17 +75,17 @@ export default function FeatureCards() {
   return (
     <section
       id="features"
-      className="relative z-10 py-24 px-6"
+      className="relative z-10 py-12 sm:py-16 md:py-24 px-4 sm:px-6"
       aria-labelledby="features-heading"
     >
       {/* Section header */}
       <div className="max-w-6xl mx-auto text-center mb-16">
-        <p className="text-sm font-semibold uppercase tracking-widest text-orange-400 mb-3">
+        <p className="text-sm font-semibold uppercase tracking-widest text-[#A855F7] mb-3">
           What we offer
         </p>
         <h2
           id="features-heading"
-          className="text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight"
         >
           Everything you need to{" "}
           <span className="gradient-text">cook confidently</span>
@@ -99,7 +97,7 @@ export default function FeatureCards() {
       </div>
 
       {/* Cards grid */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {FEATURES.map((feature, idx) => (
           <article
             key={feature.id}
@@ -153,7 +151,7 @@ export default function FeatureCards() {
             <a
               href={feature.href}
               id={`${feature.id}-learn-more`}
-              className="text-sm font-medium text-orange-400 hover:text-orange-300 flex items-center gap-1.5 transition-colors duration-200 group/link"
+              className="text-sm font-medium text-[#A855F7] hover:text-[#8B5CF6] flex items-center gap-1.5 transition-colors duration-200 group/link"
               aria-label={`Learn more about ${feature.title}`}
             >
               {feature.id === "feature-ai-assistant" ? "Try it now" : "Learn more"}
@@ -169,7 +167,7 @@ export default function FeatureCards() {
 
             {/* Hover gradient glow underline */}
             <div
-              className="absolute inset-x-0 bottom-0 h-[2px] rounded-b-2xl bg-gradient-to-r from-orange-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute inset-x-0 bottom-0 h-[2px] rounded-b-2xl bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               aria-hidden="true"
             />
           </article>

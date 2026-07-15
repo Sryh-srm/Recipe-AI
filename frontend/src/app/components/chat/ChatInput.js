@@ -48,7 +48,7 @@ export default function ChatInput({ onSend, isLoading }) {
   const canSubmit  = value.trim().length > 0 && !isLoading && !overLimit;
 
   return (
-    <div className="border-t border-white/[0.06] bg-[#0d0f14]/80 backdrop-blur-lg px-4 py-4">
+    <div className="border-t border-white/[0.06] bg-[#0d0f14]/80 backdrop-blur-lg px-3 sm:px-4 py-3 sm:py-4 pb-safe sm:pb-4">
       <form
         onSubmit={handleSubmit}
         className="max-w-3xl mx-auto"
@@ -57,8 +57,8 @@ export default function ChatInput({ onSend, isLoading }) {
       >
         {/* Input wrapper */}
         <div
-          className={`relative flex items-end gap-3 glass-card rounded-2xl px-4 py-3 transition-all duration-200
-            ${overLimit ? "border-red-500/40" : "gradient-border focus-within:shadow-lg focus-within:shadow-orange-500/10"}`}
+          className={`relative flex items-end gap-2 sm:gap-3 glass-card rounded-2xl px-3 sm:px-4 py-2 sm:py-3 transition-all duration-200
+            ${overLimit ? "border-red-500/40" : "gradient-border focus-within:shadow-lg focus-within:shadow-[#7C3AED]/10"}`}
         >
           {/* Textarea */}
           <textarea
@@ -73,7 +73,7 @@ export default function ChatInput({ onSend, isLoading }) {
             maxLength={MAX_CHARS + 20}
             aria-label="Chat message input"
             aria-describedby="chat-input-hint"
-            className="flex-1 resize-none bg-transparent text-white text-sm placeholder-slate-500 outline-none leading-relaxed disabled:opacity-50 min-h-[24px] max-h-[160px] py-0.5"
+            className="flex-1 resize-none bg-transparent text-white text-base sm:text-sm placeholder-slate-500 outline-none leading-relaxed disabled:opacity-50 min-h-[24px] max-h-[160px] py-0.5"
           />
 
           {/* Send button */}
@@ -84,7 +84,7 @@ export default function ChatInput({ onSend, isLoading }) {
             aria-label="Send message"
             className={`flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 self-end
               ${canSubmit
-                ? "bg-gradient-to-br from-orange-500 to-pink-500 text-white shadow-md shadow-orange-500/30 hover:scale-110 hover:shadow-orange-500/50"
+                ? "bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] text-white shadow-md shadow-[#7C3AED]/30 hover:scale-110 hover:shadow-[#7C3AED]/50"
                 : "bg-white/[0.06] text-slate-600 cursor-not-allowed"
               }`}
           >

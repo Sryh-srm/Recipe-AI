@@ -8,8 +8,8 @@ export default function HomePage() {
     <>
       {/* Ambient background orbs */}
       <div aria-hidden="true">
-        <div className="orb orb-orange" />
-        <div className="orb orb-pink" />
+        <div className="orb orb-purple-primary" />
+        <div className="orb orb-purple-secondary" />
         <div className="orb orb-blue" />
       </div>
 

@@ -79,16 +79,16 @@ function SearchPageInner() {
     <>
       {/* Ambient orbs */}
       <div aria-hidden="true">
-        <div className="orb orb-orange" style={{ opacity: 0.3 }} />
-        <div className="orb orb-pink"   style={{ opacity: 0.2 }} />
+        <div className="orb orb-purple-primary" style={{ opacity: 0.3 }} />
+        <div className="orb orb-purple-secondary"   style={{ opacity: 0.2 }} />
       </div>
 
       <Navbar />
 
       <main id="main-content" className="relative z-10 flex-1 flex flex-col">
         {/* ── Page Header ── */}
-        <section className="pt-28 pb-10 px-6 text-center">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+        <section className="pt-24 sm:pt-28 pb-8 sm:pb-10 px-4 sm:px-6 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
             Find your next{" "}
             <span className="gradient-text">recipe</span>
           </h1>
@@ -99,7 +99,7 @@ function SearchPageInner() {
         </section>
 
         {/* ── Search Bar ── */}
-        <section className="px-6 pb-8 max-w-3xl mx-auto w-full" aria-label="Recipe search controls">
+        <section className="px-4 sm:px-6 pb-4 max-w-3xl mx-auto w-full" aria-label="Recipe search controls">
           <SearchBar
             searchMode={searchMode}
             onModeChange={handleModeChange}
@@ -109,7 +109,7 @@ function SearchPageInner() {
         </section>
 
         {/* ── Results area ── */}
-        <section className="flex-1 px-6 pb-16 max-w-7xl mx-auto w-full">
+        <section className="flex-1 px-4 sm:px-6 pb-12 sm:pb-16 max-w-7xl mx-auto w-full">
           {/* Results header */}
           {hasSearched && !isLoading && !error && results.length > 0 && (
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
@@ -144,12 +144,17 @@ function SearchPageInner() {
             <SearchInitialState />
           ) : (
             <div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
               role="list"
               aria-label="Recipe search results"
             >
               {results.map((recipe, idx) => (
-                <div key={`${recipe.recipe_name}-${idx}`} role="listitem">
+                <div 
+                  key={`${recipe.recipe_name}-${idx}`} 
+                  role="listitem"
+                  className="animate-fade-up"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
                   <RecipeCard
                     recipe={recipe}
                     highlightMode={searchMode === "keyword"}

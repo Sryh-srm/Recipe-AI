@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Navbar from "@/app/components/Navbar";
+import LogoIcon from "@/app/components/LogoIcon";
 import ChatMessage from "@/app/components/chat/ChatMessage";
 import ChatInput from "@/app/components/chat/ChatInput";
 import ChatSuggestions from "@/app/components/chat/ChatSuggestions";
@@ -15,14 +16,11 @@ function WelcomeScreen({ onSelect }) {
     <div className="flex flex-col items-center justify-center flex-1 px-4 pt-16 pb-6 gap-8 text-center">
       {/* Hero icon */}
       <div className="relative">
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-2xl shadow-orange-500/30">
-          <svg viewBox="0 0 40 40" fill="white" className="w-10 h-10" aria-hidden="true">
-            <path d="M20 4C12.27 4 6 10.27 6 18c0 4.76 2.38 8.94 6 11.48V32c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-2.52C31.62 26.94 34 22.76 34 18c0-7.73-6.27-14-14-14z" />
-            <path d="M14 38h12v2H14z" opacity=".7" />
-          </svg>
+        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] flex items-center justify-center shadow-2xl shadow-[#7C3AED]/30">
+          <LogoIcon className="w-10 h-10" />
         </div>
         {/* Glow ring */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 opacity-20 blur-xl scale-150" aria-hidden="true" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#8B5CF6] opacity-20 blur-xl scale-150" aria-hidden="true" />
       </div>
 
       {/* Heading */}
@@ -79,8 +77,8 @@ export default function AssistantPage() {
     <>
       {/* Ambient orbs — subtle for chat context */}
       <div aria-hidden="true">
-        <div className="orb orb-orange" style={{ opacity: 0.18 }} />
-        <div className="orb orb-pink"   style={{ opacity: 0.12 }} />
+        <div className="orb orb-purple-primary" style={{ opacity: 0.18 }} />
+        <div className="orb orb-purple-secondary"   style={{ opacity: 0.12 }} />
       </div>
 
       <Navbar />
@@ -125,7 +123,7 @@ export default function AssistantPage() {
           {!hasMessages ? (
             <WelcomeScreen onSelect={sendMessage} />
           ) : (
-            <div className="max-w-3xl mx-auto w-full px-4 py-6 flex flex-col gap-5">
+            <div className="max-w-4xl mx-auto w-full px-4 py-6 flex flex-col gap-5">
               {/* Render all messages */}
               <ol className="flex flex-col gap-5 list-none p-0 m-0" aria-label="Chat messages">
                 {messages.map((msg) => (
